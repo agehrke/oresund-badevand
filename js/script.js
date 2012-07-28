@@ -15,6 +15,7 @@ function initializeMap() {
 										 position.coords.longitude);
 
 		map.setCenter(pos);
+		map.setZoom(8);
 	  }, function() {
 		//alert("No geolocation");
 	  });
@@ -35,6 +36,10 @@ function initializeMap() {
 			google.maps.event.addListener(marker, 'click', function() {
 				var win = window.open('http://oresund.badevand.dk/DashboardEngine.aspx?DashboardID=BathingWater\\DK\\PrognoseDescription&[PP1]=' + item.Name);
 				win.focus();
+			});
+			
+			google.maps.event.addListener(marker, 'mousedown', function() {
+				alert("mouse down");
 			});
 		});		
 	});
