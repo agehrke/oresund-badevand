@@ -73,9 +73,23 @@ html, body {
   height: 100%;
 }
 
+#map, .prognose {
+	display: none;
+}
+#map.active, .prognose.active {
+	display: block;
+}
 
-
-
+/* Prognose */
+.back {
+	float: right;
+}
+#ctl02_ForecastTable {
+	width: 100%;
+}
+#ctl02_HeaderRow {
+	font-weight: bold;
+}
 
 
 
