@@ -6,22 +6,21 @@ function initializeMap() {
 	  mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 
-	var map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
+	window.map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
 		
 	// Try HTML5 geolocation
 	if (navigator.geolocation) {
 	  navigator.geolocation.getCurrentPosition(function(position) {
-		var pos = new google.maps.LatLng(position.coords.latitude,
-										 position.coords.longitude);
-
+		var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 		map.setCenter(pos);
-		map.setZoom(8);
+		map.setZoom(12);
 	  }, function() {
 		//alert("No geolocation");
 	  });
 	}
 	
 	// Show badevand
+	var hasTouch = "ontouchstart" in window;
 	$.getJSON("http://pipes.yahoo.com/pipes/pipe.run?_id=aa240069f533d2b96d820f0f5441333a&_render=json&_callback=?", function(data) {
 		$.each(data.value.items, function(i, item) {
 			var image = getFlagUrl(item.Icon);
@@ -33,14 +32,16 @@ function initializeMap() {
 				icon: image
 			});
 			
-			google.maps.event.addListener(marker, 'click', function() {
-				var win = window.open('http://oresund.badevand.dk/DashboardEngine.aspx?DashboardID=BathingWater\\DK\\PrognoseDescription&[PP1]=' + item.Name);
+			var openPrognose = function() {
+				var win = window.open('http://oresund.badevand.dk/DashboardEngine.aspx?DashboardID=BathingWater\\DK\\Prognose&[PP1]=' + item.Name);
 				win.focus();
-			});
+			}
 			
-			google.maps.event.addListener(marker, 'mousedown', function() {
-				alert("mouse down");
-			});
+			if (hasTouch) {
+				google.maps.event.addListener(marker, 'mousedown', openPrognose);
+			} else {			
+				google.maps.event.addListener(marker, 'click', openPrognose);
+			}
 		});		
 	});
 }
