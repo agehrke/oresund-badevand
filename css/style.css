@@ -79,6 +79,20 @@ html, body {
 #map.active, .prognose.active {
 	display: block;
 }
+.prognose .content {
+	display: none;
+}
+.loader {
+	text-align: center;
+	font-size: 200%;
+	display: none;
+}
+.prognose.loading .loader {
+	display: block;
+}
+.prognose.loaded .content {
+	display: block;
+}
 
 /* Prognose */
 .back {

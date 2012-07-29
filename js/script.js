@@ -1,4 +1,4 @@
-// DOM ready
+﻿// DOM ready
 $(function() {
     // Load Google Maps async
 	var script = document.createElement('script');
@@ -6,16 +6,8 @@ $(function() {
 	script.src = 'https://maps.googleapis.com/maps/api/js?sensor=false&' +	'callback=initializeMap';
 	document.body.appendChild(script);
 	
-	// Check for hash
-	if (window.location.hash) {
-		var hash = window.location.hash.replace("#", "");		
-	} else {
-		$("#map").addClass("active");
-	}
-	
-	// Hash changes
-	$(window).bind("hashchange", function() {
-		if (window.location.hash == "#map") {			
+	var loadPage = function() {
+		if (window.location.hash == "#map" || window.location.hash == "") {
 			$(".prognose").removeClass("active");
 			$("#map").addClass("active");
 			google.maps.event.trigger(map, 'resize');
@@ -23,9 +15,13 @@ $(function() {
 			var strand = window.location.hash.replace("#", "");
 			showPrognose(strand);
 		}
+	}
+	
+	// Hash changes
+	$(window).bind("hashchange", function() {
+		loadPage();
 	});
 	
-	var hasTouch = "ontouchstart" in window;
 	var markers = [];
 	
 	// Google Maps async load
@@ -38,8 +34,9 @@ $(function() {
 		
 		window.map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
 		findAndZoomToLocation();
+		loadPage();
 		if (markers.length > 0) placeMarkers(markers, map);
-	}	
+	}
 	
 	// Load badevand	
 	$.getJSON("http://pipes.yahoo.com/pipes/pipe.run?_id=aa240069f533d2b96d820f0f5441333a&_render=json&_callback=?", function(data) {
@@ -67,10 +64,12 @@ $(function() {
 	
 	var showPrognose = function(strand) {
 		window.location.hash = strand;
+		$(".prognose").addClass("loading active").removeClass("loaded");
+		$("#map").removeClass("active");
+		$(".prognose .header").text(decodeURIComponent(strand));
 		getPrognose(strand, function(html) {
-			$(".prognose .header").text(strand);
-			$(".prognose").addClass("active").find(".content").html(html);
-			$("#map").removeClass("active");
+			$(".prognose").removeClass("loading").addClass("loaded");
+			$(".prognose .content").html(html);
 		});
 	}
 
