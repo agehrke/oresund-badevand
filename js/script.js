@@ -59,15 +59,9 @@ $(function() {
 				icon: image
 			});
 			
-			if (hasTouch) {
-				google.maps.event.addListener(marker, 'mousedown', function() {
-					showPrognose(item.Name);
-				});
-			} else {			
-				google.maps.event.addListener(marker, 'click', function() {
-					showPrognose(item.Name);
-				});
-			}
+			google.maps.event.addListener(marker, 'click', function() {
+				showPrognose(item.Name);
+			});
 		});		
 	}
 	
