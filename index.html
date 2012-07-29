@@ -5,7 +5,7 @@
   <meta charset="utf-8">
 
   <title>Badevand i Øresund</title>
-  <meta name="description" content="">
+  <meta name="description" content="Se badevandskvalitet for strande og badeområder i Øresund. Let og tilgængelig på din mobiltelefon uden en app.">
 
   <!-- Mobile viewport optimization h5bp.com/ad -->
   <meta name="HandheldFriendly" content="True">
@@ -13,14 +13,9 @@
   <meta name="viewport" content="width=device-width">
 
   <!-- Home screen icon  Mathias Bynens mathiasbynens.be/notes/touch-icons -->
-  <!-- For iPhone 4 with high-resolution Retina display: -->
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/h/apple-touch-icon.png">
-  <!-- For first-generation iPad: -->
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/m/apple-touch-icon.png">
-  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
-  <link rel="apple-touch-icon-precomposed" href="img/l/apple-touch-icon-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="img/badevand.png">
   <!-- For nokia devices: -->
-  <link rel="shortcut icon" href="img/l/apple-touch-icon.png">
+  <link rel="shortcut icon" href="img/badevand.png">
   
   <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
   <meta http-equiv="cleartype" content="on">
@@ -34,16 +29,20 @@
 <body>
 	<div id="map">
 		<div id="google-map">
-			Indlæser kort
+			Indlæser kort over badevandskvalitets i Øresund
 		</div>	
 	</div>    
   <div class="prognose">
 	<header>
-		<a href="#map" class="back" title="Tilbage til kort">Tilbage</a>
-		<h3 class="header"></h3>		
+		<a href="#map" class="back">Tilbage til kort</a>
+		<h3 class="header"></h3>	
 	</header>
 	<div class="loader">Indlæser prognose</div>
 	<div class="content"></div>
+	<footer>
+		<p>Badevandskvalitet og prognose leveret af <a href="http://www.badevand.dk/">Badevand.dk</a></p>
+		<p><small>Kildekode på <a href="https://github.com/agehrke/oresund-badevand">Github</a> af <a href="http://dk.linkedin.com/in/andreasgehrke" title="Gå til LinkedIn profil">Andreas Gehrke</a>.</small></p>
+	</footer>
   </div>
 
   <!-- JavaScript at the bottom for fast page loading -->
@@ -59,10 +58,10 @@
   <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
        mathiasbynens.be/notes/async-analytics-snippet -->
   <script>
-    /*var _gaq=[["_setAccount","UA-910322-4"],["_trackPageview"]];
+    var _gaq=[["_setAccount","UA-910322-5"],["_trackPageview"]];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
     g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
-    s.parentNode.insertBefore(g,s)}(document,"script"));*/
+    s.parentNode.insertBefore(g,s)}(document,"script"));
   </script>
 
 </body>
