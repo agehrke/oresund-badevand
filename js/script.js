@@ -39,7 +39,7 @@ $(function() {
 	}
 	
 	// Load badevand	
-	$.getJSON("http://pipes.yahoo.com/pipes/pipe.run?_id=aa240069f533d2b96d820f0f5441333a&_render=json&_callback=?", function(data) {
+	$.getJSON("http://pipes.yahoo.com/pipes/pipe.run?_id=881636fbccc2c005aeafa0eca38b145b&_render=json&_callback=?", function(data) {
 		// Save markers
 		markers = data.value.items;
 		if ("setZoom" in map) placeMarkers(markers, map);
