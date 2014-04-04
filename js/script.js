@@ -73,13 +73,7 @@ $(function() {
 		});
 	}
 
-	var getFlagUrl = function (status) {
-		var url;
-		if (status == 'green') url = 'img/FlagGreen.png';
-		else if (status == 'red')  url ='img/FlagRed.png';
-		else if (status == 'yellow') url = 'img/FlagYellow.png';
-		else url = 'img/FlagGrey.png';
-		
+	var getFlagUrl = function (url) {
 		var img = new google.maps.MarkerImage(url, null, new google.maps.Point(0, 0));
 		return img;
 	}
